@@ -53,22 +53,7 @@ def Analysis(num):
   else:
     difference = "lesser"
 
-  # FIND DIFFERENCE BETWEEN MEANS
-  #outliers already removed!
-  # ADD HERE THE SIMULATION. MMean = Malignant Mean, BMean = Benign Means and cycles automatically through all columns
-  # data[] = the whole unsorted data set (benign and malignant merged). MList[] = list of malignant only, BList[] = list of benign only.
-  #IMPORTANT: THE MList AND BList CONTAIN ONLY THE VALUES FROM THE REQUIRED COLUMN.
-  #IMPORTANT: USE data[RANDOMNUM][num] to randomise which group participants are in.
-  #IMPORTANT: DO NOT USE 0 IN RANDOMNUM GENERATOR AS THAT IS THE COLUMN TITLE
-  # USE WEEK 7 2
-  #make 2 lists (same length as b and m lists respectively) and randomly assign values from data[RANDOMNUM][num] into both
-  #find means of the two lists and then difference between means and add to a new list
-  #repeat a lot of times and each time add the difference in means to this new list
-  #after the repeating is done use countnonzero to find how many times the ACTUAL difference in means appears
-  #how many times it appears DIVIDED BY the amount of repeats EQUALS the chance of this happening
-  #report the % and use if chance < 0.05 then SIGNIFICANT and print whether sig or not.
-  #WHEN COMPLETED upload your code to https://github.com/BenHadad1/Contribution-To-Data-Science-Project to be added to final project
-
+  Simulation(MList, BList, MMean, BMean)
 
   ttest, pvalue = scipy.stats.ttest_ind(MList, BList, axis = 0, equal_var = True, nan_policy = "propagate", permutations = None, random_state = 0, alternative = "two-sided", trim = 0)
   if pvalue < 0.001:
@@ -88,6 +73,24 @@ def MeanStD(MList, BList):
   BMean = statistics.mean(BList)
   MMean = statistics.mean(MList)
   return stdM, stdB, MMean, BMean
+
+def Simulation(MList, BList, MMean, BMean):
+  print("soitdoesntbreak")
+#FIND DIFFERENCE BETWEEN MEANS
+# outliers already removed!
+# ADD HERE THE SIMULATION. MMean = Malignant Mean, BMean = Benign Means and cycles automatically through all columns
+# data[] = the whole unsorted data set (benign and malignant merged). MList[] = list of malignant only, BList[] = list of benign only.
+# IMPORTANT: THE MList AND BList CONTAIN ONLY THE VALUES FROM THE REQUIRED COLUMN.
+# IMPORTANT: USE data[RANDOMNUM][num] to randomise which group participants are in.
+# IMPORTANT: DO NOT USE 0 IN RANDOMNUM GENERATOR AS THAT IS THE COLUMN TITLE
+# USE WEEK 7 2
+# make 2 lists (same length as b and m lists respectively) and randomly assign values from data[RANDOMNUM][num] into both
+# find means of the two lists and then difference between means and add to a new list
+# repeat a lot of times and each time add the difference in means to this new list
+# after the repeating is done use countnonzero to find how many times the ACTUAL difference in means appears
+# how many times it appears DIVIDED BY the amount of repeats EQUALS the chance of this happening
+# report the % and use if chance < 0.05 then SIGNIFICANT and print whether sig or not.
+# WHEN COMPLETED upload your code to https://github.com/BenHadad1/Contribution-To-Data-Science-Project to be added to final project
 
 def PlotHistogram(MList, BList, num, MMean, BMean, stdM, stdB):
   title = "Histogram of " + data[0][num]
