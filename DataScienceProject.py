@@ -67,6 +67,7 @@ def Analysis(num):
   #after the repeating is done use countnonzero to find how many times the ACTUAL difference in means appears
   #how many times it appears DIVIDED BY the amount of repeats EQUALS the chance of this happening
   #report the % and use if chance < 0.05 then SIGNIFICANT and print whether sig or not.
+  #WHEN COMPLETED upload your code to https://github.com/BenHadad1/Contribution-To-Data-Science-Project to be added to final project
 
 
   ttest, pvalue = scipy.stats.ttest_ind(MList, BList, axis = 0, equal_var = True, nan_policy = "propagate", permutations = None, random_state = 0, alternative = "two-sided", trim = 0)
